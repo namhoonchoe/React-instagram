@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .center__container--column {
+    @apply flex flex-col justify-start items-center 
+  }
+  
+  .center__container--row {
+    @apply flex flex-row justify-center items-center 
+  }
+
+  .nav__container {
+    @apply w-full h-12 border-b-2 border-slate-300 flex flex-row justify-around items-center px-2.5
+  }
+
+  .page__container {
+    @apply mt-10 w-[944px] h-screen flex justify-center items-center bg-white
+  }
+}

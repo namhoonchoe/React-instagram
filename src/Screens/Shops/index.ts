@@ -1,3 +1,3 @@
-import ShopsContianer from "./ShopsContianer";
+import ShopsContainer from "./ShopsContainer";
 
-export default ShopsContianer
+export default ShopsContainer
