@@ -7,12 +7,13 @@ interface IIconProps {
 }
 
 export const HomeIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -26,12 +27,13 @@ export const HomeIcon: React.FC<IIconProps> = ({
 };
 
 export const HomeIconFilled: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -45,12 +47,13 @@ export const HomeIconFilled: React.FC<IIconProps> = ({
 };
 
 export const AddICon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -64,12 +67,13 @@ export const AddICon: React.FC<IIconProps> = ({
 };
 
 export const SendIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white "
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -83,12 +87,13 @@ export const SendIcon: React.FC<IIconProps> = ({
 };
 
 export const SendIconFilled: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -102,12 +107,13 @@ export const SendIconFilled: React.FC<IIconProps> = ({
 };
 
 export const ExploreIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -121,12 +127,13 @@ export const ExploreIcon: React.FC<IIconProps> = ({
 };
 
 export const ExploreIconFilled: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -140,12 +147,13 @@ export const ExploreIconFilled: React.FC<IIconProps> = ({
 };
 
 export const LikeIconFilled: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -159,12 +167,13 @@ export const LikeIconFilled: React.FC<IIconProps> = ({
 };
 
 export const LikeIconBorder: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -178,12 +187,13 @@ export const LikeIconBorder: React.FC<IIconProps> = ({
 };
 
 export const ProfileIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill,
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -197,12 +207,13 @@ export const ProfileIcon: React.FC<IIconProps> = ({
 };
 
 export const ChatBubbleIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
+      className="stroke-white"
       xmlns="http://www.w3.org/2000/svg"
       height={height}
       viewBox="0 0 24 24"
@@ -216,9 +227,9 @@ export const ChatBubbleIcon: React.FC<IIconProps> = ({
 };
 
 export const BookMarkIconBoarder: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
@@ -235,9 +246,9 @@ export const BookMarkIconBoarder: React.FC<IIconProps> = ({
 };
 
 export const BookMarkIconFilled: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
@@ -254,9 +265,9 @@ export const BookMarkIconFilled: React.FC<IIconProps> = ({
 };
 
 export const SettingIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg
@@ -273,9 +284,9 @@ export const SettingIcon: React.FC<IIconProps> = ({
 };
 
 export const SearchIcon: React.FC<IIconProps> = ({
-  width = "24px",
-  height = "24px",
-  fill = "#000000",
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
 }) => {
   return (
     <svg

@@ -16,6 +16,6 @@
   }
 
   .page__container {
-    @apply mt-10 w-[944px] h-screen flex justify-center items-center bg-white
+    @apply mt-10 w-[944px] flex justify-center items-center bg-white relative
   }
 }
