@@ -66,27 +66,7 @@ export const AddICon: React.FC<IIconProps> = ({
   );
 };
 
-export const SendIcon: React.FC<IIconProps> = ({
-  width = "30px",
-  height = "30px",
-  fill = "#4b5563",
-}) => {
-  return (
-    <svg
-      className="stroke-white "
-      xmlns="http://www.w3.org/2000/svg"
-      height={height}
-      viewBox="0 0 24 24"
-      width={width}
-      fill={fill}
-    >
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path d="M4.01 6.03l7.51 3.22-7.52-1 .01-2.22m7.5 8.72L4 17.97v-2.22l7.51-1M2.01 3L2 10l15 2-15 2 .01 7L23 12 2.01 3z" />
-    </svg>
-  );
-};
-
-export const SendIconFilled: React.FC<IIconProps> = ({
+export const CollectionIcon: React.FC<IIconProps> = ({
   width = "30px",
   height = "30px",
   fill = "#4b5563",
@@ -100,8 +80,10 @@ export const SendIconFilled: React.FC<IIconProps> = ({
       width={width}
       fill={fill}
     >
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" />
+      <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 10l-2.5-1.5L15 12V4h5v8z" />
     </svg>
   );
 };

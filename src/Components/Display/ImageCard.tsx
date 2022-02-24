@@ -1,9 +1,19 @@
 import React from 'react'
 
-export default function ImageCard() {
+interface IImageProps {
+  width:number
+  height:number
+  source:string
+}
+
+
+const ImageCard:React.FC<IImageProps> = ({ width, height, source }) =>  {
+  const ratio = Math.round((height / width)*100)/100
   return (
-    <div className='w-72 h-72 centered__box--column justify-self-center content-center	'>
-      <img src={require("../assets/monica-ballester-sa73tolGKUs-unsplash (1).jpg")} alt="example" className='w-full h-full'/>
+    <div className={`w-64 h-[${16*ratio}rem]  centered__box--column justify-self-center content-center`}>
+      <img src={source} alt="" className='w-full h-full'/>
     </div>
   )
 }
+
+export default ImageCard

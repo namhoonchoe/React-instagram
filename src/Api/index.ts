@@ -12,12 +12,12 @@ export const getRandomPhotos = async() => {
 
 export const getTopics = async() => {
   const { response } = await unsplash.topics.list({})
-  return response?.results
+  return response?.results  as Array<ITopic>|undefined 
 }
 
 export async function getTopicPhotos(topicId:string) {
-  const { response } = await unsplash.topics.getPhotos({ topicIdOrSlug:topicId })
-  return response
+  const { response } = await unsplash.topics.getPhotos({ topicIdOrSlug:topicId, perPage:20})
+  return response?.results as Array<ITopicPhoto> |undefined
 }
 
 export const searchPhotos = async(query:string) => {

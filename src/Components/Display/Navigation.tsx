@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   HomeIcon,
-  SendIcon,
+  CollectionIcon,
   AddICon,
   ExploreIcon,
   ProfileIcon,
@@ -43,7 +43,7 @@ export default function Navigation() {
       </div>
       <div className="w-1/6 mr-2">
         <Link to="message">
-          <SendIcon />
+          <CollectionIcon />
         </Link>
       </div>
       <div className="w-1/6 mr-2">

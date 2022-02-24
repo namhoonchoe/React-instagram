@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import HomePresenter from './HomePresenter'
 import { useQuery } from 'react-query'
-import { getTopicPhotos, getTopics } from "@Api"
+import { getRandomPhotos } from "@Api"
 
 export default function HomeContainer() {
-  const { data:topicPhotos } = useQuery('topicPhotos', () => getTopicPhotos("blabla"))
-  const { data:topics } = useQuery('topics', getTopics)
-
-
+  const { data:randomPhotos, isError, isLoading } = useQuery<Array<IRandom>|undefined>('randomPhotos', getRandomPhotos)
   return (
-    <HomePresenter  topicPhotos={topicPhotos} topics={topics} />
+    <HomePresenter randomPhotos={randomPhotos} error={isError} isLoading={isLoading} />
   )
 }

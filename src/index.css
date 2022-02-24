@@ -18,4 +18,29 @@
   .page__container {
     @apply mt-10 w-[944px] flex justify-center items-center bg-white relative
   }
+
+  .basic__grid {
+    @apply w-full h-full grid grid-cols-3 grid-rows-[masonry] items-start
+  }
+}
+
+@layer utilities {
+  @variants responsive {
+      .masonry {
+          column-gap: 1.5em;
+          column-count: 1;
+      }
+      .masonry-sm {
+          column-gap: 1.5em;
+          column-count: 2;
+      }
+      .masonry-md {
+          column-gap: 1.5em;
+          column-count: 3;
+      }
+      .break-inside {
+          break-inside: avoid;
+      }
+
+  }
 }
