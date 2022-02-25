@@ -11,8 +11,8 @@ import Posts from "@Screens/Profile/Posts";
 export default function AppRouter() {
   return (
     <Router>
-      <div className="w-screen flex flex-col justify-start items-center bg-cyan-200 relative">
-          <Header />
+      <div className="w-[99vw] flex flex-col justify-start items-center bg-cyan-200 relative ">
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />

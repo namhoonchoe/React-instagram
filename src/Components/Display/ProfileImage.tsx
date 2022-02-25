@@ -12,9 +12,9 @@ const ProfileImage: React.FC<IProfileImageProps> = ({
   source,
 }) => {
   return (
-    <div className={`center__container--row ${width} ${height}  border border-blue-400`}>
+    <div className={`center__container--row ${width} ${height} `}>
       <img
-        src={require('../assets/Profile.jpg')}
+        src={source}
         alt="Profile"
         className={`${width} ${height} rounded-full`}
       />
