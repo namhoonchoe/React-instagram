@@ -4,7 +4,8 @@
     "paths": {
       "@Components/*": ["./Components/*"],
       "@Screens/*": ["./Screens/*"],
-      "@Api":["./Api"]
+      "@Api":["./Api"],
+      "@RecoilStore/*":["./RecoilStore/*"]
     }
   }
 }
