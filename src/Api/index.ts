@@ -6,7 +6,12 @@ const unsplash = createApi({
 
 
 export const getRandomPhotos = async() => {
-  const { response } = await unsplash.photos.getRandom({ count:9 })
+  const { response } = await unsplash.photos.getRandom({ count:20 , featured:true })
+  return response as IRandom[] | undefined 
+}
+
+export async function getRelatedPhotos(topicIds:Array<string> ) {
+  const { response } = await unsplash.photos.getRandom({ count:15 , topicIds:topicIds, featured:true })
   return response as IRandom[] | undefined 
 }
 
@@ -16,7 +21,7 @@ export const getTopics = async() => {
 }
 
 export async function getTopicPhotos(topicId:string) {
-  const { response } = await unsplash.topics.getPhotos({ topicIdOrSlug:topicId, perPage:10})
+  const { response } = await unsplash.topics.getPhotos({ topicIdOrSlug:topicId, perPage:20})
   return response?.results as Array<ITopicPhoto> | undefined
 }
 

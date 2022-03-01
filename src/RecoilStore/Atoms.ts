@@ -18,3 +18,8 @@ export const topicInfoState = atom<ITopicInfos>({
     topicDescription:""
   }
 })
+
+export const searchKeyWordState = atom<string>({
+  key:"searchKeyword",
+  default:""
+})

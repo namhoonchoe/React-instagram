@@ -4,6 +4,7 @@ interface IIconProps {
   width?: string;
   height?: string;
   fill?: string;
+  onClick?: void
 }
 
 export const HomeIcon: React.FC<IIconProps> = ({
@@ -299,6 +300,29 @@ export const ArrowIcon: React.FC<IIconProps> = ({
     >
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+    </svg>
+  );
+};
+
+
+
+
+export const CloseIcon: React.FC<IIconProps> = ({
+  width = "30px",
+  height = "30px",
+  fill = "#4b5563",
+  onClick
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height={height}
+      viewBox="0 0 24 24"
+      width={width}
+      fill={fill}
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
     </svg>
   );
 };

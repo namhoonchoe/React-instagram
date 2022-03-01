@@ -16,7 +16,7 @@
   }
 
   .page__container {
-    @apply mt-10 w-[944px] flex justify-center items-center bg-white relative
+    @apply mt-20 w-[944px] flex justify-center items-center bg-white relative
   }
 
   .basic__grid {
