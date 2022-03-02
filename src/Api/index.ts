@@ -4,7 +4,6 @@ const unsplash = createApi({
   accessKey: process.env.REACT_APP_UNSPLASH_API_KEY as string,
 });
 
-
 export const getRandomPhotos = async() => {
   const { response } = await unsplash.photos.getRandom({ count:20 , featured:true })
   return response as IRandom[] | undefined 
@@ -25,7 +24,17 @@ export async function getTopicPhotos(topicId:string) {
   return response?.results as Array<ITopicPhoto> | undefined
 }
 
-export const searchPhotos = async(query:string) => {
+export async function searchPhotos(query:string) {
+  const { response } = await unsplash.search.getPhotos({query})
+  return response
+}
+
+export async function searchCollections(query:string) {
+  const { response } = await unsplash.search.getPhotos({query})
+  return response
+}
+
+export async function searchUsers(query:string) {
   const { response } = await unsplash.search.getPhotos({query})
   return response
 }

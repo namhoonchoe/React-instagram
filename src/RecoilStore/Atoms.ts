@@ -19,7 +19,13 @@ export const topicInfoState = atom<ITopicInfos>({
   }
 })
 
+
 export const searchKeyWordState = atom<string>({
   key:"searchKeyword",
   default:""
+})
+
+export const redirectionState = atom<boolean>({
+  key:"redirection",
+  default:false
 })

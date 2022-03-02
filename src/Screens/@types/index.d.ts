@@ -254,3 +254,136 @@ interface ITopicPhoto {
   urls: IUrls;
   links: ILinks;
 }
+
+interface ISearchPhotoDataLinks {
+  self:     string;
+  html:     string;
+  download: string;
+}
+
+
+interface ISearchUserLinks {
+  self:   string;
+  html:   string;
+  photos: string;
+  likes:  string;
+}
+
+
+interface ISearchUser {
+  id:                 string;
+    username:           string;
+    name:               string;
+    first_name:         string;
+    last_name:          string;
+    instagram_username: string;
+    twitter_username:   string;
+    portfolio_url:      string;
+    profile_image:      IUserProfileImage;
+    links:              ISearchUserLinks;
+}
+
+
+interface ISearchPhoto {
+  id:                       string;
+  created_at:               string;
+  width:                    number;
+  height:                   number;
+  color:                    string;
+  blur_hash:                string;
+  likes:                    number;
+  liked_by_user:            boolean;
+  description:              string;
+  user:                     ISearchUser;
+  current_user_collections: any[];
+  urls:                     IUrls;
+  links:                    ISearchPhotoDataLinks;
+}
+
+
+interface ISearchPhotoResult {
+  total:       number;
+  total_pages: number;
+  results:Array<ISearchPhoto>
+}
+
+interface  ISearchCollectionUserLinks {
+  self:     string;
+  html:     string;
+  photos:   string;
+  likes?:   string;
+  related?: string;
+}
+
+interface ISearchCollectionUser {
+  id:            string;
+  username:      string;
+  name:          string;
+  portfolio_url: string|null;
+  bio:           string;
+  profile_image: IUserProfileImage;
+  links:         ISearchCollectionUserLinks;
+}
+
+interface ISearchCollectionCoverPhoto {
+  id:            string;
+  created_at:    string;
+  width:         number;
+  height:        number;
+  color:         string;
+  blur_hash:     string;
+  likes:         number;
+  liked_by_user: boolean;
+  description:   string;
+  user:          ISearchCollectionUser;
+  urls:          IUrls;
+  links:         ISearchPhotoDataLinks;
+}
+
+interface ISearchCollection {
+  id:                number;
+  title:             string;
+  description:       null;
+  published_at:      string;
+  last_collected_at: string;
+  updated_at:        string;
+  featured:          boolean;
+  total_photos:      number;
+  private:           boolean;
+  share_key:         string;
+  cover_photo:       ISearchCollectionCoverPhoto;
+  user:              ISearchCollectionUser;
+  links:             ISearchPhotoDataLinks;
+}
+
+interface ISearchCollectionResult {
+  total:       number;
+  total_pages: number;
+  results:Array<ISearchCollection>
+}
+
+
+interface ISearchUser {
+  id:                 string;
+  username:           string;
+  name:               string;
+  first_name:         string;
+  last_name:          string;
+  instagram_username: string;
+  twitter_username:   string;
+  portfolio_url:      null;
+  total_likes:        number;
+  total_photos:       number;
+  total_collections:  number;
+  profile_image:      IUserProfileImage;
+  links:              ISearchUserLinks;
+}
+
+
+interface ISearchUserResult {
+  total:       number;
+  total_pages: number;
+  results:Array<ISearchUser>
+}
+
+
