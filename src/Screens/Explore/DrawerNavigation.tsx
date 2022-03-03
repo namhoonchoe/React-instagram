@@ -6,56 +6,66 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  IconButton,
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useQuery } from "react-query";
-import { getTopics } from "@Api"
+import { getTopics } from "@Api";
 import { ArrowIcon } from "@Components/Display/SvgIcons";
 import { useSetRecoilState } from "recoil";
-import { topicIdState} from "@RecoilStore/Atoms"
+import { topicIdState } from "@RecoilStore/Atoms";
 
-
-const DrawerNavigation:React.FC = () =>  {
+const DrawerNavigation: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef() as any;
-  const { data:topics, isError, isLoading} = useQuery<Array<ITopic> | undefined>("topics", getTopics);
+  const {
+    data: topics,
+    isError,
+    isLoading,
+  } = useQuery<Array<ITopic> | undefined>("topics", getTopics);
 
   interface ITopicCardProps {
     topicTitle: string;
     imageUrl?: string;
-    topicId:string
-    changeTopicId: any
+    topicId: string;
+    changeTopicId: any;
   }
 
-  const changeTopicId = useSetRecoilState(topicIdState)
+  const changeTopicId = useSetRecoilState(topicIdState);
 
-  const TopicCard: React.FC<ITopicCardProps> = ({ topicTitle, imageUrl, topicId, changeTopicId }) => {
+  const TopicCard: React.FC<ITopicCardProps> = ({
+    topicTitle,
+    imageUrl,
+    topicId,
+    changeTopicId,
+  }) => {
     return (
-        <div
-          className={`w-30 h-20 rounded-md  bg-center bg-cover `}
-          style={{ backgroundImage: `url(${imageUrl})` }}
-          onClick={() => changeTopicId((id:string) => topicId)}
-        >
-          <div className=" center__container--row w-full h-full rounded-md backdrop-brightness-75 hover:backdrop-brightness-100 " >
-            <p className="text-white	text-center text-sm font-semibold p-1">
-              {topicTitle}
-            </p>
-          </div>
+      <div
+        className={`w-30 h-20 rounded-md  bg-center bg-cover `}
+        style={{ backgroundImage: `url(${imageUrl})` }}
+        onClick={() => changeTopicId((id: string) => topicId)}
+      >
+        <div className=" center__container--row w-full h-full rounded-md backdrop-brightness-75 hover:backdrop-brightness-100 ">
+          <p className="text-white	text-center text-sm font-semibold p-1">
+            {topicTitle}
+          </p>
         </div>
+      </div>
     );
   };
 
   return (
     <>
-      <Button
-        leftIcon={<ArrowIcon />}
-        ref={btnRef}
-        colorScheme={"whiteAlpha"}
+      <IconButton
+        aria-label="Open Drawer"
+        colorScheme="white"
+        size="sm"
+        variant="unstyled"
         onClick={onOpen}
-        width={"3rem"}
-        height={"3rem"}
-      ></Button>
+        icon={<ArrowIcon />}
+      />
+
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -88,7 +98,6 @@ const DrawerNavigation:React.FC = () =>  {
       </Drawer>
     </>
   );
-}
+};
 
-
-export default DrawerNavigation
+export default DrawerNavigation;

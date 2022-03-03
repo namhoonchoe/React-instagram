@@ -38,7 +38,6 @@ export default function AppRouter() {
           <Route path="search" element={<Search />}>
             <Route path="" element={<SearchPhotos />} />
             <Route path="collection" element={<SearchCollection />} />
-            
           </Route>
         </Routes>
         {redirection && <Navigate to="search" />}

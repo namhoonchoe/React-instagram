@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import {
   HomeIcon,
+  HomeIconFilled,
   CollectionIcon,
   AddICon,
   ExploreIcon,
+  ExploreIconFilled,
   ProfileIcon,
   LikeIconBorder,
   LikeIconFilled,
@@ -33,16 +35,19 @@ import {
 
 export default function Navigation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const matchHome = useMatch("/");
+  const matchProfile = useMatch("/profile");
+  const matchExplore = useMatch("/explore");
 
   return (
     <div className="center__container--row bg-white">
       <div className="w-1/6 mr-2">
         <Link to="/">
-          <HomeIcon />
+          {matchHome === null ? <HomeIcon /> : <HomeIconFilled />}
         </Link>
       </div>
       <div className="w-1/6 mr-2">
-        <Link to="message">
+        <Link to="/">
           <CollectionIcon />
         </Link>
       </div>
@@ -75,28 +80,42 @@ export default function Navigation() {
       </div>
       <div className="w-1/6 mr-2">
         <Link to="explore">
-          <ExploreIcon />
+          {matchExplore === null ? <ExploreIcon /> : <ExploreIconFilled />}
         </Link>
       </div>
       <div className="w-1/6 mr-2">
         <Popover>
-          <PopoverTrigger>
-            <IconButton
-              aria-label="Add to favorite"
-              colorScheme="white"
-              size="sm"
-              variant="unstyled"
-              icon={<LikeIconBorder />}
-            />
-          </PopoverTrigger>
-          <PopoverContent width={"31rem"} height={"22rem"}>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverHeader>Confirmation!</PopoverHeader>
-            <PopoverBody>
-              Are you sure you want to have that milkshake?
-            </PopoverBody>
-          </PopoverContent>
+          {({ isOpen }) => (
+            <>
+              <PopoverTrigger>
+                {isOpen ? (
+                  <IconButton
+                    aria-label="Add to favorite"
+                    colorScheme="white"
+                    size="sm"
+                    variant="unstyled"
+                    icon={<LikeIconFilled />}
+                  />
+                ) : (
+                  <IconButton
+                    aria-label="Add to favorite"
+                    colorScheme="white"
+                    size="sm"
+                    variant="unstyled"
+                    icon={<LikeIconBorder />}
+                  />
+                )}
+              </PopoverTrigger>
+              <PopoverContent width={"31rem"} height={"22rem"}>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>Confirmation!</PopoverHeader>
+                <PopoverBody>
+                  Are you sure you want to have that milkshake?
+                </PopoverBody>
+              </PopoverContent>
+            </>
+          )}
         </Popover>
       </div>
       <div className="w-1/6 mr-2">

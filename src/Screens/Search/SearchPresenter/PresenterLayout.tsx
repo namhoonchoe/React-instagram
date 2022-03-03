@@ -12,7 +12,7 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import {
   HistoryIcon,
   CollectionIcon,
@@ -26,6 +26,9 @@ import { usePathTypeCheck } from "@Hooks/usePathTypeCheck";
 export default function PresenterLayout() {
   const searchKeyword = useRecoilValue(searchKeyWordState);
   const pathType = usePathTypeCheck();
+  const matchPhotos = useMatch("/search");
+  const matchCollections = useMatch("/search/collection");
+
   return (
     <>
       <section className="page__container flex-col ">
@@ -34,22 +37,40 @@ export default function PresenterLayout() {
             {searchKeyword}
           </p>
         </section>
-        <div className="flex flex-row justify-start items-center w-full h-14 border-2  relative">
+        <div className="flex flex-row justify-start items-center w-full h-14 border-2 relative">
           <Link to="">
-            <div className="flex justify-start items-center pl-2 ">
-              <PhotoIcon width={"32px"} height={"32px"} fill={"#9ca3af"} />
-              <p className="ml-1 text-slate-400	">Photos</p>
-            </div>
+            {matchPhotos === null ? (
+              <div className="flex justify-start items-center pl-2 ">
+                <PhotoIcon width={"32px"} height={"32px"} fill={"#9ca3af"} />
+                <p className="ml-1 text-slate-400	font-semibold">Photos</p>
+              </div>
+            ) : (
+              <div className="flex justify-start items-center pl-2  ">
+                <PhotoIcon width={"32px"} height={"32px"} />
+                <p className="ml-1 font-semibold	">Photos</p>
+              </div>
+            )}
           </Link>
           <Link to="collection">
-            <div className="flex justify-start items-center pl-2 ">
-              <CollectionIcon width={"32px"} height={"32px"} fill={"#9ca3af"} />
-              <p className="ml-1 text-slate-400	">Collections</p>
-            </div>
+            {matchCollections === null ? (
+              <div className="flex justify-start items-center pl-2  ml-2">
+                <CollectionIcon
+                  width={"32px"}
+                  height={"32px"}
+                  fill={"#9ca3af"}
+                />
+                <p className="ml-1 text-slate-400	font-semibold">Collections</p>
+              </div>
+            ) : (
+              <div className="flex justify-start items-center pl-2 ml-2 ">
+                <CollectionIcon width={"32px"} height={"32px"} />
+                <p className="ml-1 font-semibold">Collections</p>
+              </div>
+            )}
           </Link>
           {pathType !== "collection" && (
             <div className="absolute right-3">
-              <TuneIcon width={"32px"} height={"32px"} />
+              <TuneIcon width={"30px"} height={"30px"} />
             </div>
           )}
         </div>
