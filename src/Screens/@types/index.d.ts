@@ -9,17 +9,19 @@ interface IRandom {
   blur_hash: string;
   description: string | null;
   alt_description: string | null;
-  downloads: number;
-  likes: number;
-  liked_by_user: boolean;
-  description: string;
-  exif: IExif;
-  location: ILocation;
-  categories: any;
-  current_user_collections?: Array<ICollectionItem>;
   urls: IUrls;
   links: ILinks;
+  categories: Array<any>;
+  likes: number;
+  liked_by_user: boolean;
+  current_user_collections: Array<any>;
+  sponsorship:any
+  topic_submissions:any
   user: IUser;
+  exif: IExif;
+  location: ILocation;
+  views:number
+  downloads: number;
 }
 
 interface IExif {
@@ -31,6 +33,7 @@ interface IExif {
   focal_length: string;
   iso: number;
 }
+
 interface ILinks {
   self: string;
   html: string;
@@ -57,6 +60,13 @@ interface IUrls {
   regular: string;
   small: string;
   thumb: string;
+  small_s3: string;
+}
+
+interface ITag {
+  type: string;
+  title: string;
+  source?: any;
 }
 
 interface IUser {
@@ -71,7 +81,7 @@ interface IUser {
   bio: string;
   location: string;
   links: IUserLinks;
-  profile_image: IUserProfileImage;
+  profile_image: IProfileImage;
   instagram_username: string;
   total_collections: number;
   total_likes: number;
@@ -87,6 +97,8 @@ interface IUserLinks {
   photos: string;
   likes: string;
   portfolio: string;
+  following: string;
+  followers: string;
 }
 
 interface ICollectionItem {
@@ -106,7 +118,7 @@ interface ISocial {
   paypal_email: null;
 }
 
-interface IUserProfileImage {
+interface IProfileImage {
   small: string;
   medium: string;
   large: string;
@@ -161,7 +173,7 @@ interface IOwner {
   bio: string;
   location: string;
   links: IOwnerLinks;
-  profile_image: IUserProfileImage;
+  profile_image: IProfileImage;
   instagram_username: string;
   total_collections: number;
   total_likes: number;
@@ -169,37 +181,41 @@ interface IOwner {
   accepted_tos: boolean;
 }
 
-interface ICoverPhotoUser {
-  id: string;
-  updated_at: string;
-  username: string;
-  name: string;
-  first_name: string;
-  last_name: null | string;
-  twitter_username: string;
-  portfolio_url: string;
-  bio: string;
-  location: string;
-  links: ICoverPhotoUserLinks;
-  profile_image: IUserProfileImage;
-  instagram_username: string;
-  total_collections: number;
-  total_likes: number;
-  total_photos: number;
-  accepted_tos: boolean;
-}
 
-interface ICoverPhotoUserLinks {
-  self: string;
-  html: string;
-  photos: string;
-  likes: string;
-  portfolio: string;
-  following: string;
-  followers: string;
-}
 
 interface ICoverPhoto {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  promoted_at: null | string;
+  width: number;
+  height: number;
+  color: string;
+  blur_hash: string;
+  description: string;
+  alt_description: string | null;
+  urls: IUrls;
+  links: ILinks;
+  categories: Array<any>;
+  likes: number;
+  liked_by_user: boolean;
+  current_user_collections: Array<any>;
+  sponsorship: any;
+  topic_submissions: any;
+  user: IUser;
+}
+
+interface IPreviewPhoto {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  blur_hash: string;
+  urls: IUrls;
+}
+
+
+
+interface ITopicPhoto {
   id: string;
   created_at: string;
   updated_at: string;
@@ -212,36 +228,62 @@ interface ICoverPhoto {
   alt_description: string;
   urls: IUrls;
   links: ILinks;
-  user: ICoverPhotoUser;
+  categorys: Array<any>;
+  likes: number;
+  liked_by_user: boolean;
+  current_user_collections: Array<any>;
+  sponsorship: any;
+  topic_submissions: any;
+  user: IUser;
 }
 
-interface IPreviewPhoto {
+
+
+
+interface ISearchPhoto {
   id: string;
   created_at: string;
   updated_at: string;
+  promoted_at: string;
+  width: number;
+  height: number;
+  color: string;
+  blur_hash: string;
+  description: string;
+  alt_description: string;
   urls: IUrls;
+  links: ILinks;
+  categories: Array<any>;
+  likes: number;
+  liked_by_user: boolean;
+  current_user_collections: any[];
+  sponsorship: any;
+  topic_submissions: any;
+  user: IUser;
+  tags: Array<ITag>;
 }
 
-interface ITopicUser {
+interface ISearchCollectionUserLinks {
+  self: string;
+  html: string;
+  photos: string;
+  likes?: string;
+  related?: string;
+}
+
+interface ISearchCollectionUser {
   id: string;
   username: string;
   name: string;
-  portfolio_url: string;
+  portfolio_url: string | null;
   bio: string;
-  location: string;
-  total_likes: number;
-  total_photos: number;
-  total_collections: number;
-  instagram_username: string;
-  twitter_username: string;
-  profile_image: IUserProfileImage;
-  links: IUserLinks;
+  profile_image: IProfileImage;
+  links: ISearchCollectionUserLinks;
 }
 
-interface ITopicPhoto {
+interface ISearchCollectionCoverPhoto {
   id: string;
   created_at: string;
-  updated_at: string;
   width: number;
   height: number;
   color: string;
@@ -249,141 +291,50 @@ interface ITopicPhoto {
   likes: number;
   liked_by_user: boolean;
   description: string;
-  user: ITopicUser;
-  current_user_collections: Array<ICollectionItem>;
+  user: ISearchCollectionUser;
   urls: IUrls;
-  links: ILinks;
-}
-
-interface ISearchPhotoDataLinks {
-  self:     string;
-  html:     string;
-  download: string;
-}
-
-
-interface ISearchUserLinks {
-  self:   string;
-  html:   string;
-  photos: string;
-  likes:  string;
-}
-
-
-interface ISearchUser {
-  id:                 string;
-    username:           string;
-    name:               string;
-    first_name:         string;
-    last_name:          string;
-    instagram_username: string;
-    twitter_username:   string;
-    portfolio_url:      string;
-    profile_image:      IUserProfileImage;
-    links:              ISearchUserLinks;
-}
-
-
-interface ISearchPhoto {
-  id:                       string;
-  created_at:               string;
-  width:                    number;
-  height:                   number;
-  color:                    string;
-  blur_hash:                string;
-  likes:                    number;
-  liked_by_user:            boolean;
-  description:              string;
-  user:                     ISearchUser;
-  current_user_collections: any[];
-  urls:                     IUrls;
-  links:                    ISearchPhotoDataLinks;
-}
-
-
-interface ISearchPhotoResult {
-  total:       number;
-  total_pages: number;
-  results:Array<ISearchPhoto>
-}
-
-interface  ISearchCollectionUserLinks {
-  self:     string;
-  html:     string;
-  photos:   string;
-  likes?:   string;
-  related?: string;
-}
-
-interface ISearchCollectionUser {
-  id:            string;
-  username:      string;
-  name:          string;
-  portfolio_url: string|null;
-  bio:           string;
-  profile_image: IUserProfileImage;
-  links:         ISearchCollectionUserLinks;
-}
-
-interface ISearchCollectionCoverPhoto {
-  id:            string;
-  created_at:    string;
-  width:         number;
-  height:        number;
-  color:         string;
-  blur_hash:     string;
-  likes:         number;
-  liked_by_user: boolean;
-  description:   string;
-  user:          ISearchCollectionUser;
-  urls:          IUrls;
-  links:         ISearchPhotoDataLinks;
+  links: ISearchPhotoDataLinks;
 }
 
 interface ISearchCollection {
-  id:                number;
-  title:             string;
-  description:       null;
-  published_at:      string;
+  id: number;
+  title: string;
+  description: null | string;
+  published_at: string;
   last_collected_at: string;
-  updated_at:        string;
-  featured:          boolean;
-  total_photos:      number;
-  private:           boolean;
-  share_key:         string;
-  cover_photo:       ISearchCollectionCoverPhoto;
-  user:              ISearchCollectionUser;
-  links:             ISearchPhotoDataLinks;
+  updated_at: string;
+  curated: boolean;
+  featured: boolean;
+  total_photos: number;
+  private: boolean;
+  share_key: string;
+  tags: Array<ITag>;
+  user: IUser;
+  links: ILinks;
+  cover_photo: ISearchCollectionCoverPhoto;
+  preview_photos: Array<IPreviewPhoto>;
 }
-
-interface ISearchCollectionResult {
-  total:       number;
-  total_pages: number;
-  results:Array<ISearchCollection>
-}
-
 
 interface ISearchUser {
-  id:                 string;
-  username:           string;
-  name:               string;
-  first_name:         string;
-  last_name:          string;
-  instagram_username: string;
-  twitter_username:   string;
-  portfolio_url:      null;
-  total_likes:        number;
-  total_photos:       number;
-  total_collections:  number;
-  profile_image:      IUserProfileImage;
-  links:              ISearchUserLinks;
+  id: string;
+  updated_at: string;
+  username: string;
+  name: string;
+  first_name: string;
+  last_name: string;
+  twitter_username:null| string;
+  portfolio_url: null | string;
+  bio: string;
+  location: string;
+  links: IOwnerLinks;
+  profile_image: IProfileImage;
+  instagram_username:null| string;
+  total_collections: number;
+  total_likes: number;
+  total_photos: number;
+  accepted_tos: boolean;
+  for_hire: boolean;
+  followed_by_user: false;
+  social: ISocial;
+  photos: Array<IPreviewPhoto>;
 }
-
-
-interface ISearchUserResult {
-  total:       number;
-  total_pages: number;
-  results:Array<ISearchUser>
-}
-
-

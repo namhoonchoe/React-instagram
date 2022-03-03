@@ -3,12 +3,13 @@ import { Tooltip, ScaleFade, useOutsideClick } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
 import { searchKeyWordState, redirectionState } from "@RecoilStore/Atoms";
 import { SearchIcon, CloseIcon } from "./SvgIcons";
-
+import { useLocation } from "react-router-dom";
 export default function SearchInput() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
   const setKeywordValue = useSetRecoilState(searchKeyWordState)
   const redirectionValue = useSetRecoilState(redirectionState)
+  const path = useLocation().pathname
 
   const openSearchBox = () => {
     setClicked(true);
@@ -23,11 +24,19 @@ export default function SearchInput() {
     setKeyword(e.target.value);
   };
 
+  const needRedirection = () =>{
+    if(path.includes("search")){
+      redirectionValue(false)
+    } else{
+      redirectionValue(true)
+    }
+  }
+
   const onSubmit = (e: any) => {
     e.preventDefault();
     if(keyword !== "") {
       setKeywordValue(keyword)
-      redirectionValue(true)
+      needRedirection()
       setKeyword("");
     } else {
       alert("enter search keyword")

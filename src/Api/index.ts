@@ -26,17 +26,17 @@ export async function getTopicPhotos(topicId:string) {
 
 export async function searchPhotos(query:string) {
   const { response } = await unsplash.search.getPhotos({query})
-  return response
+  return response?.results as Array<ISearchPhoto> | undefined
 }
 
 export async function searchCollections(query:string) {
-  const { response } = await unsplash.search.getPhotos({query})
-  return response
+  const { response } = await unsplash.search.getCollections({query})
+  return response?.results as Array<ISearchCollection> | undefined
 }
 
 export async function searchUsers(query:string) {
-  const { response } = await unsplash.search.getPhotos({query})
-  return response
+  const { response } = await unsplash.search.getUsers({query})
+  return response?.results as Array<ISearchUser> | undefined
 }
 
 export const getPublicProfile = async(username:string) => {

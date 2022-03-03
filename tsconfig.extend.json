@@ -5,7 +5,8 @@
       "@Components/*": ["./Components/*"],
       "@Screens/*": ["./Screens/*"],
       "@Api":["./Api"],
-      "@RecoilStore/*":["./RecoilStore/*"]
+      "@RecoilStore/*":["./RecoilStore/*"],
+      "@Hooks/*":["./Hooks/*"]
     }
   }
 }

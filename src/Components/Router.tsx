@@ -13,7 +13,6 @@ import Profile from "@Screens/Profile";
 import Search from "@Screens/Search";
 import SearchPhotos from "@Screens/Search/SearchPresenter/SearchPhotos";
 import SearchCollection from "@Screens/Search/SearchPresenter/SearchCollection";
-import SearchUsers from "@Screens/Search/SearchPresenter/SearchUsers";
 import Saved from "@Screens/Profile/Saved";
 import Tagged from "@Screens/Profile/Tagged";
 import Posts from "@Screens/Profile/Posts";
@@ -39,7 +38,7 @@ export default function AppRouter() {
           <Route path="search" element={<Search />}>
             <Route path="" element={<SearchPhotos />} />
             <Route path="collection" element={<SearchCollection />} />
-            <Route path="users" element={<SearchUsers />} />
+            
           </Route>
         </Routes>
         {redirection && <Navigate to="search" />}

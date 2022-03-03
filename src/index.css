@@ -20,7 +20,7 @@
   }
 
   .basic__grid {
-    @apply w-full h-full grid grid-cols-3 grid-rows-[masonry] items-start
+    @apply w-full h-full grid grid-cols-3 items-start
   }
 }
 

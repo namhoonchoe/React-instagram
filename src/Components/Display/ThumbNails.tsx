@@ -12,7 +12,7 @@ const ThumbNails: React.FC<IThumbNailProps> = ({
   sourceThree,
 }) => {
   return (
-    <section className="w-72 h-48 grid grid-cols-3 grid-rows-2 rounded-xl justify-self-center 	shadow-md">
+    <section className="w-72 h-48 grid grid-cols-3 grid-rows-2 rounded-xl justify-self-center shadow-md">
       <div className="col-span-2 row-span-2  rounded-l-md border border-white">
         <img src={sourceOne} alt="" className="object-center w-full h-full  rounded-l-md" />
       </div>

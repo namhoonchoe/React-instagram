@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { getTopicPhotos } from "@Api";
 import { topicIdState } from "@RecoilStore/Atoms";
-
 import ImageCard from "@Components/Display/ImageCard";
 
 const Main: React.FC = () => {
