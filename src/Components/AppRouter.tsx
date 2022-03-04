@@ -1,18 +1,19 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Header from "./Display/Header";
 import Home from "@Screens/Home";
 import Explore from "@Screens/Explore";
 import Login from "@Screens/Login";
-import Profile from "@Screens/Profile";
+import Detail from "@Screens/Detail";
 import Search from "@Screens/Search";
 import SearchPhotos from "@Screens/Search/SearchPresenter/SearchPhotos";
 import SearchCollection from "@Screens/Search/SearchPresenter/SearchCollection";
+import Profile from "@Screens/Profile";
 import Saved from "@Screens/Profile/Saved";
 import Tagged from "@Screens/Profile/Tagged";
 import Posts from "@Screens/Profile/Posts";
@@ -22,11 +23,15 @@ import { useRecoilValue } from "recoil";
 
 export default function AppRouter() {
   const redirection = useRecoilValue(redirectionState);
+  let location = useLocation();
+
+  let state = location.state as { backgroundLocation?: Location };
+
   return (
-    <Router>
+    <>
       <div className="w-[99vw] flex flex-col justify-start items-center bg-cyan-200 relative ">
         <Header />
-        <Routes>
+        <Routes location={state?.backgroundLocation || location}>
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="explore" element={<Explore />} />
@@ -42,6 +47,11 @@ export default function AppRouter() {
         </Routes>
         {redirection && <Navigate to="search" />}
       </div>
-    </Router>
+      {state?.backgroundLocation && (
+        <Routes>
+          <Route path="detail/:id" element={<Detail />} />
+        </Routes>
+      )}
+    </>
   );
 }

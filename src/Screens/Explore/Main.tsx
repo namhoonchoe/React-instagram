@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, Link } from 'react-router-dom'
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { getTopicPhotos } from "@Api";
@@ -6,6 +7,7 @@ import { topicIdState } from "@RecoilStore/Atoms";
 import ImageCard from "@Components/Display/ImageCard";
 
 const Main: React.FC = () => {
+  let location = useLocation()
   const selectedId = useRecoilValue(topicIdState);
   const [topicId, setTopicId] = useState<string>("9QVREH9A3DU");
   const {
@@ -39,6 +41,11 @@ const Main: React.FC = () => {
       {topicPhotos !== undefined &&
         topicPhotos.map((topicPhoto: ITopicPhoto) => {
           return (
+            <Link
+            key={topicPhoto.id}
+            to={`/detail/${topicPhoto.id}`}
+            state={{ backgroundLocation: location }}
+          >
             <div className="break-inside mb-4">
               <ImageCard
                 width={topicPhoto.width}
@@ -46,6 +53,7 @@ const Main: React.FC = () => {
                 source={topicPhoto.urls.regular}
               />
             </div>
+            </Link>
           );
         })}
     </section>

@@ -3,14 +3,19 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import {
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
+  Stack,
+  Select,
+  Radio,
+  RadioGroup,
+  IconButton,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { Link, useMatch } from "react-router-dom";
 import {
@@ -28,6 +33,8 @@ export default function PresenterLayout() {
   const pathType = usePathTypeCheck();
   const matchPhotos = useMatch("/search");
   const matchCollections = useMatch("/search/collection");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
@@ -70,7 +77,67 @@ export default function PresenterLayout() {
           </Link>
           {pathType !== "collection" && (
             <div className="absolute right-3">
-              <TuneIcon width={"30px"} height={"30px"} />
+              <IconButton
+                aria-label={"Open Modal"}
+                colorScheme={"white"}
+                size={"sm"}
+                variant={"unstyled"}
+                onClick={onOpen}
+                icon={<TuneIcon width={"30px"} height={"30px"} />}
+              />
+              <Modal
+                isOpen={isOpen}
+                onClose={onClose}
+                scrollBehavior={"outside"}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Filters</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <div className="flex flex-col justify-center items-start  w-full mb-4">
+                      <p>Orientation</p>
+                      <Select placeholder="Select Orientation">
+                        <option value="">Any Orientation</option>
+                        <option value="">Landscape</option>
+                        <option value="">Portrait</option>
+                        <option value="">Squarish</option>
+                      </Select>
+                    </div>
+                    <div className="flex flex-col justify-center items-start w-full mb-4">
+                      <p>Color</p>
+                      <Select placeholder="Select Color">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </Select>
+                    </div>
+                    <div className="flex flex-col justify-center items-start w-full">
+                      <p>Sort by</p>
+                      <RadioGroup>
+                        <Stack direction="column">
+                          <Radio value="1">Relevant</Radio>
+                          <Radio value="2">Latest</Radio>
+                        </Stack>
+                      </RadioGroup>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button colorScheme="blue" mr={3} onClick={onClose}>
+                      Close
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </div>
           )}
         </div>
