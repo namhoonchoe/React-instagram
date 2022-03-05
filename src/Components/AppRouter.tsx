@@ -14,9 +14,9 @@ import Search from "@Screens/Search";
 import SearchPhotos from "@Screens/Search/SearchPresenter/SearchPhotos";
 import SearchCollection from "@Screens/Search/SearchPresenter/SearchCollection";
 import Profile from "@Screens/Profile";
-import Saved from "@Screens/Profile/Saved";
-import Tagged from "@Screens/Profile/Tagged";
-import Posts from "@Screens/Profile/Posts";
+import ProfilePhotos from "@Screens/Profile/ProfilePresenter/ProfilePhotos";
+import ProfileCollections from "@Screens/Profile/ProfilePresenter/ProfileCollections";
+import ProfileLikes from "@Screens/Profile/ProfilePresenter/ProfileLikes";
 
 import { redirectionState } from "@RecoilStore/Atoms";
 import { useRecoilValue } from "recoil";
@@ -35,10 +35,10 @@ export default function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="explore" element={<Explore />} />
-          <Route path="profile" element={<Profile />}>
-            <Route path="" element={<Posts />} />
-            <Route path="saved" element={<Saved />} />
-            <Route path="tagged" element={<Tagged />} />
+          <Route path="profile/:username" element={<Profile />}>
+            <Route path="" element={<ProfilePhotos />} />
+            <Route path="collections" element={<ProfileCollections />} />
+            <Route path="likes" element={<ProfileLikes />} />
           </Route>
           <Route path="search" element={<Search />}>
             <Route path="" element={<SearchPhotos />} />

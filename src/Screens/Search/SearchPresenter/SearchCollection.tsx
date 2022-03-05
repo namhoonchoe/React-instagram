@@ -32,7 +32,7 @@ export default function SearchCollection() {
                   {collection.title}
                 </p>
                 <div className="flex flex-row items-center justify-start text-sm text-slate-500	 mt-1">
-                  <p >{collection.total_photos}</p>
+                  <p>{collection.total_photos}</p>
                   <p className="mx-1"> Photos</p>
                   <p className="mr-1 text-xs  ">Curated by</p>
                   <p className=" font-semibold">{collection.user.name}</p>
