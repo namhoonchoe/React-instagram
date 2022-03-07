@@ -24,8 +24,17 @@ export async function getTopicPhotos(topicId:string) {
   return response?.results as Array<ITopicPhoto> | undefined
 }
 
-export async function searchPhotos(query:string) {
-  const { response } = await unsplash.search.getPhotos({query})
+
+interface ISearchQuery {
+  query:string
+  orientation?:any
+  color?:any
+  orderBy?:any
+}
+
+export async function searchPhotos(queryObject:ISearchQuery) {
+  const { query, orientation , color, orderBy } = queryObject
+  const { response } = await unsplash.search.getPhotos({query,orientation,color,orderBy})
   return response?.results as Array<ISearchPhoto> | undefined
 }
 

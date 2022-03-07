@@ -1,20 +1,19 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
-import { searchKeyWordState } from "@RecoilStore/Atoms";
+import { searchQueryState } from "@RecoilStore/Atoms";
 import { searchPhotos } from "@Api";
 import ImageCard from "@Components/Display/ImageCard";
 
 export default function SearchPhotos() {
-  const searchKeyword = useRecoilValue(searchKeyWordState);
-
+  const searchQuery = useRecoilValue(searchQueryState);
   const {
     data: photos,
     isError,
     isLoading,
   } = useQuery<Array<ISearchPhoto> | undefined>(
-    ["searchPhotos", searchKeyword],
-    () => searchPhotos(searchKeyword)
+    ["searchPhotos", searchQuery],
+    () => searchPhotos({...searchQuery})
   );
   return (
     <section className="masonry-md ">

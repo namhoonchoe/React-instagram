@@ -1,13 +1,13 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
-import { searchKeyWordState } from "@RecoilStore/Atoms";
+import { searchQueryState } from "@RecoilStore/Atoms";
 import { searchCollections } from "@Api";
 import ThumbNails from "@Components/Display/ThumbNails";
 
 export default function SearchCollection() {
-  const searchKeyword = useRecoilValue(searchKeyWordState);
-
+  const searchQuery = useRecoilValue(searchQueryState);
+  let searchKeyword = searchQuery.query;
   const {
     data: collections,
     isError,
@@ -39,9 +39,11 @@ export default function SearchCollection() {
                 </div>
                 <div className="flex flex-row items-center justify-start mt-2">
                   {collection.tags.slice(3).map((tag) => {
-                    return <div className="bg-slate-300 rounded-md  mr-1 px-1">
-                      <p className="text-sm p-1">{tag.title}</p>
-                    </div>;
+                    return (
+                      <div className="bg-slate-300 rounded-md  mr-1 px-1">
+                        <p className="text-sm p-1">{tag.title}</p>
+                      </div>
+                    );
                   })}
                 </div>
               </section>

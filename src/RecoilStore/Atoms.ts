@@ -19,10 +19,21 @@ export const topicInfoState = atom<ITopicInfos>({
   }
 })
 
+interface ISearchQuery {
+  query:string
+  orientation:string|undefined
+  color:string|undefined
+  orderBy:string|undefined
+}
 
-export const searchKeyWordState = atom<string>({
-  key:"searchKeyword",
-  default:""
+export const searchQueryState = atom<ISearchQuery>({
+  key:"searchQuery",
+  default:{
+    query:"",
+    orientation:undefined,
+    color:undefined,
+    orderBy:undefined
+  }
 })
 
 export const redirectionState = atom<boolean>({

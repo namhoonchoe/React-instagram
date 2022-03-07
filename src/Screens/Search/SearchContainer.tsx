@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
-import { redirectionState } from "@RecoilStore/Atoms";
+import { useSetRecoilState, useResetRecoilState } from "recoil";
+import { redirectionState, searchQueryState } from "@RecoilStore/Atoms";
 import SearchPresenter from "./SearchPresenter";
 
 export default function SearchContainer() {

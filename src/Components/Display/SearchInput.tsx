@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Tooltip, ScaleFade, useOutsideClick } from "@chakra-ui/react";
-import { useSetRecoilState } from "recoil";
-import { searchKeyWordState, redirectionState } from "@RecoilStore/Atoms";
+import { useSetRecoilState, useRecoilState } from "recoil";
+import { searchQueryState, redirectionState } from "@RecoilStore/Atoms";
 import { SearchIcon, CloseIcon } from "./SvgIcons";
 import { useLocation } from "react-router-dom";
 export default function SearchInput() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
-  const setKeywordValue = useSetRecoilState(searchKeyWordState)
-  const redirectionValue = useSetRecoilState(redirectionState)
-  const path = useLocation().pathname
+  const [searchTerm, setSearchTerm] = useRecoilState(searchQueryState);
+  const redirectionValue = useSetRecoilState(redirectionState);
+  const path = useLocation().pathname;
 
   const openSearchBox = () => {
     setClicked(true);
@@ -24,22 +24,22 @@ export default function SearchInput() {
     setKeyword(e.target.value);
   };
 
-  const needRedirection = () =>{
-    if(path.includes("search")){
-      redirectionValue(false)
-    } else{
-      redirectionValue(true)
+  const needRedirection = () => {
+    if (path.includes("search")) {
+      redirectionValue(false);
+    } else {
+      redirectionValue(true);
     }
-  }
+  };
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    if(keyword !== "") {
-      setKeywordValue(keyword)
-      needRedirection()
+    if (keyword !== "") {
+      setSearchTerm({ ...searchTerm, query: keyword });
+      needRedirection();
       setKeyword("");
     } else {
-      alert("enter search keyword")
+      alert("enter search keyword");
     }
   };
 
@@ -56,7 +56,10 @@ export default function SearchInput() {
                   placeholder="Search"
                   className="bg-slate-300 w-2/3 pl-4"
                 />
-                <div className="w-1/6 flex items-center justify-center" onClick={() => closeSearchBox()}>
+                <div
+                  className="w-1/6 flex items-center justify-center"
+                  onClick={() => closeSearchBox()}
+                >
                   <CloseIcon />
                 </div>
               </div>
