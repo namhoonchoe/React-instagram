@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { searchQueryState } from "@RecoilStore/Atoms";
@@ -21,6 +22,7 @@ export default function SearchCollection() {
       {collections !== undefined &&
         collections.map((collection) => {
           return (
+            <Link to={`/collection/${collection.id}`}>
             <section className="center__container--column w-72 justify-self-center">
               <ThumbNails
                 sourceOne={collection.preview_photos[0].urls.regular}
@@ -48,6 +50,8 @@ export default function SearchCollection() {
                 </div>
               </section>
             </section>
+            </Link>
+            
           );
         })}
     </section>

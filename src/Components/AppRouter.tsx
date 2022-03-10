@@ -8,6 +8,7 @@ import {
 import Header from "./Display/Header";
 import Home from "@Screens/Home";
 import Explore from "@Screens/Explore";
+import Collection from "@Screens/Collection"
 import Login from "@Screens/Login";
 import Detail from "@Screens/Detail";
 import Search from "@Screens/Search";
@@ -35,6 +36,7 @@ export default function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="explore" element={<Explore />} />
+          <Route path="collection/:id" element={<Collection />} />
           <Route path="profile/:username" element={<Profile />}>
             <Route path="" element={<ProfilePhotos />} />
             <Route path="collections" element={<ProfileCollections />} />

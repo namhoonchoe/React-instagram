@@ -41,20 +41,21 @@ export default function SearchInput() {
     } else {
       alert("enter search keyword");
     }
+    closeSearchBox()
   };
 
   return (
     <div className="center__container--row justify-start bg-slate-300 rounded-md w-1/4 h-8 px-1">
       {clicked ? (
         <>
-          <form onSubmit={onSubmit} className="w-full">
+          <form onSubmit={onSubmit} className="w-full ">
             <ScaleFade in={clicked}>
-              <div className="flex flex-row justify-between items-center">
+              <div className="flex flex-row justify-between items-center 4 ">
                 <input
                   value={keyword}
                   onChange={onChange}
                   placeholder="Search"
-                  className="bg-slate-300 w-2/3 pl-4"
+                  className="bg-slate-300 w-full pl-4 focus:outline-none	"
                 />
                 <div
                   className="w-1/6 flex items-center justify-center"

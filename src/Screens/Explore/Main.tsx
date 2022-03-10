@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, Link } from 'react-router-dom'
+import React, { useState, useEffect }   from "react";
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
 import { getTopicPhotos } from "@Api";
-import { topicIdState } from "@RecoilStore/Atoms";
+import { topicInfoState } from "@RecoilStore/Atoms";
+import { useLocation,Link } from 'react-router-dom'
 import ImageCard from "@Components/Display/ImageCard";
 
-const Main: React.FC = () => {
+
+
+const Main: React.FC= () => {
   let location = useLocation()
-  const selectedId = useRecoilValue(topicIdState);
+  const { topicId:selectedId} = useRecoilValue(topicInfoState);
   const [topicId, setTopicId] = useState<string>("9QVREH9A3DU");
   const {
     data: topicPhotos,
@@ -46,7 +48,7 @@ const Main: React.FC = () => {
             to={`/detail/${topicPhoto.id}`}
             state={{ backgroundLocation: location }}
           >
-            <div className="break-inside mb-4">
+            <div className="break-inside mb-6">
               <ImageCard
                 width={topicPhoto.width}
                 height={topicPhoto.height}

@@ -15,11 +15,8 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   MenuItemOption,
-  MenuGroup,
   MenuOptionGroup,
-  MenuDivider,
   Select,
 } from "@chakra-ui/react";
 import { Link, useMatch } from "react-router-dom";
@@ -45,13 +42,12 @@ export default function PresenterLayout() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const checkOrder = () => {
-    if(relevant) {
-      return 'relevant'
+    if (relevant) {
+      return "relevant";
     } else {
-      return 'latest'
+      return "latest";
     }
-  }
-
+  };
 
   interface IColorOption {
     colorName: string;
@@ -129,9 +125,19 @@ export default function PresenterLayout() {
                   <ModalCloseButton />
                   <ModalBody>
                     <div className="flex flex-col justify-center items-start  w-full mb-4">
-                      <p className="font-semibold">Orientation</p>
+                      {searchQuery.orientation !== undefined ? (
+                        <div className="flex flex-row items-center justify-start">
+                          <p className="font-semibold  mr-1">Orientation:</p>
+
+                          <p className="font-semibold capitalize ">
+                            {searchQuery.orientation}
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="font-semibold">Orientation</p>
+                      )}
                       <Select
-                        placeholder="Any Orientation"
+                        placeholder="Select Orientation"
                         onChange={(event) => setOrientation(event.target.value)}
                       >
                         <option value="landscape">Landscape</option>
@@ -140,14 +146,27 @@ export default function PresenterLayout() {
                       </Select>
                     </div>
                     <div className="flex flex-col justify-center items-start w-full mb-4">
-                      <p className="font-semibold">Color</p>
+                      {searchQuery.color !== undefined ? (
+                        <div className="flex flex-row items-center justify-start">
+                          <p className="font-semibold mr-1">Color:</p>
+                          {color === "black_and_white" ? (
+                            <p className="font-semibold capitalize ">
+                              Black & white
+                            </p>
+                          ) : (
+                            <p className="font-semibold capitalize ">{searchQuery.color}</p>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="font-semibold">Color</p>
+                      )}
                       <Menu preventOverflow={false} size={"md"}>
                         <MenuButton
                           as={Button}
                           rightIcon={<ExpendMoreIcon />}
                           bgColor={"whiteAlpha.100"}
                         >
-                          Any Color
+                          Select Color
                         </MenuButton>
                         <MenuList>
                           <MenuOptionGroup
@@ -243,11 +262,25 @@ export default function PresenterLayout() {
                           ...searchQuery,
                           orientation: orientation,
                           color: color,
-                          orderBy:checkOrder()
+                          orderBy: checkOrder(),
                         })
                       }
                     >
                       Set Filter
+                    </Button>
+                    <Button
+                      colorScheme="blue"
+                      mr={3}
+                      onClick={() =>
+                        setSearchQuery({
+                          ...searchQuery,
+                          orientation: undefined,
+                          color: undefined,
+                          orderBy: undefined,
+                        })
+                      }
+                    >
+                      Reset Filter
                     </Button>
                     <Button colorScheme="blue" mr={3} onClick={onClose}>
                       Close

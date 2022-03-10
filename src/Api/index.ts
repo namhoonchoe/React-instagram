@@ -72,16 +72,15 @@ export const getUsersCollection = async(username:string) => {
 
 export async function getCollection(id:string) {
   const { response } = await unsplash.collections.get({collectionId:id})
-  return response
+  return response as ICollection|undefined
 }
 
-
 export async function getCollectionPhotos(id:string) {
-  const { response } = await unsplash.collections.get({collectionId:id})
-  return response
+  const { response } = await unsplash.collections.getPhotos({collectionId:id})
+  return response?.results as Array<ICoverPhoto>|undefined
 }
 
 export async function getCollectionRelated(id:string) {
-  const { response } = await unsplash.collections.get({collectionId:id})
-  return response
+  const { response } = await unsplash.collections.getRelated({collectionId:id})
+  return response as any
 }

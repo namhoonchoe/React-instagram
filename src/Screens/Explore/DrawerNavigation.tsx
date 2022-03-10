@@ -14,7 +14,7 @@ import { useQuery } from "react-query";
 import { getTopics } from "@Api";
 import { ArrowIcon } from "@Components/Display/SvgIcons";
 import { useSetRecoilState } from "recoil";
-import { topicIdState } from "@RecoilStore/Atoms";
+import { topicInfoState } from "@RecoilStore/Atoms";
 
 const DrawerNavigation: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,24 +27,30 @@ const DrawerNavigation: React.FC = () => {
 
   interface ITopicCardProps {
     topicTitle: string;
+    topicDescription:string
     imageUrl?: string;
     topicId: string;
-    changeTopicId: any;
+    changeTopicInfo: any;
   }
 
-  const changeTopicId = useSetRecoilState(topicIdState);
+  const changeTopicInfo = useSetRecoilState(topicInfoState)
 
   const TopicCard: React.FC<ITopicCardProps> = ({
     topicTitle,
     imageUrl,
     topicId,
-    changeTopicId,
+    topicDescription,
+    changeTopicInfo,
   }) => {
     return (
       <div
         className={`w-30 h-20 rounded-md  bg-center bg-cover `}
         style={{ backgroundImage: `url(${imageUrl})` }}
-        onClick={() => changeTopicId((id: string) => topicId)}
+        onClick={() => changeTopicInfo({
+          topicDescription,
+          topicTitle,
+          topicId
+        })}
       >
         <div className=" center__container--row w-full h-full rounded-md backdrop-brightness-75 hover:backdrop-brightness-100 ">
           <p className="text-white	text-center text-sm font-semibold p-1">
@@ -83,9 +89,10 @@ const DrawerNavigation: React.FC = () => {
                   {topics?.map((topic: ITopic) => {
                     return (
                       <TopicCard
+                        topicDescription={topic.description}
                         topicTitle={topic.title}
                         topicId={topic.id}
-                        changeTopicId={changeTopicId}
+                        changeTopicInfo={changeTopicInfo}
                         imageUrl={topic.cover_photo.urls.regular}
                       />
                     );

@@ -1,12 +1,8 @@
 import { atom } from "recoil";
 
-export const topicIdState = atom<string>({
-  key:"topicId",
-  default:""
-})
-
 
 interface ITopicInfos {
+  topicId:string
   topicTitle:string
   topicDescription:string
 }
@@ -14,8 +10,9 @@ interface ITopicInfos {
 export const topicInfoState = atom<ITopicInfos>({
   key:"topicInfo",
   default:{
-    topicTitle:"",
-    topicDescription:""
+    topicId:"",
+    topicTitle:"Entrepreneur",
+    topicDescription:"Microsoft Surface is taking over the Entrepreneur Topic to applaud the tireless effort that goes into owning a business. Submit images from any part of the entrepreneurial journey — from starting on your couch with a laptop, to working late with endless cups of coffee. The image that highlights the struggle of the entrepreneur story the best will have the chance to win $500 USD."
   }
 })
 

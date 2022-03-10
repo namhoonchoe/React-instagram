@@ -15,12 +15,12 @@ interface IRandom {
   likes: number;
   liked_by_user: boolean;
   current_user_collections: Array<any>;
-  sponsorship:any
-  topic_submissions:any
+  sponsorship: any;
+  topic_submissions: any;
   user: IUser;
   exif: IExif;
   location: ILocation;
-  views:number
+  views: number;
   downloads: number;
 }
 
@@ -181,8 +181,6 @@ interface IOwner {
   accepted_tos: boolean;
 }
 
-
-
 interface ICoverPhoto {
   id: string;
   created_at: string;
@@ -213,8 +211,6 @@ interface IPreviewPhoto {
   urls: IUrls;
 }
 
-
-
 interface ITopicPhoto {
   id: string;
   created_at: string;
@@ -236,9 +232,6 @@ interface ITopicPhoto {
   topic_submissions: any;
   user: IUser;
 }
-
-
-
 
 interface ISearchPhoto {
   id: string;
@@ -322,13 +315,13 @@ interface ISearchUser {
   name: string;
   first_name: string;
   last_name: string;
-  twitter_username:null| string;
+  twitter_username: null | string;
   portfolio_url: null | string;
   bio: string;
   location: string;
   links: IOwnerLinks;
   profile_image: IProfileImage;
-  instagram_username:null| string;
+  instagram_username: null | string;
   total_collections: number;
   total_likes: number;
   total_photos: number;
@@ -338,3 +331,30 @@ interface ISearchUser {
   social: ISocial;
   photos: Array<IPreviewPhoto>;
 }
+
+interface IMeta {
+  title: null | string;
+  description: null | string;
+  index: boolean;
+}
+
+interface ICollection {
+  id: number;
+  title: string;
+  description: null | string;
+  published_at: string;
+  last_collected_at: string;
+  updated_at: string;
+  curated: boolean;
+  featured: boolean;
+  total_photos: number;
+  private: boolean;
+  share_key: string;
+  tags: Array<ITag>;
+  user: IUser;
+  links: ILinks;
+  cover_photo: ISearchCollectionCoverPhoto;
+  preview_photos: Array<IPreviewPhoto>;
+  meta: IMeta;
+}
+
