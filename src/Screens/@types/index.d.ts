@@ -327,14 +327,14 @@ interface ISearchUser {
   total_photos: number;
   accepted_tos: boolean;
   for_hire: boolean;
-  followed_by_user: false;
+  followed_by_user: boolean;
   social: ISocial;
   photos: Array<IPreviewPhoto>;
 }
 
 interface IMeta {
-  title: null | string;
-  description: null | string;
+  title?: null | string;
+  description?: null | string;
   index: boolean;
 }
 
@@ -358,3 +358,46 @@ interface ICollection {
   meta: IMeta;
 }
 
+interface ITags {
+  custom: Array<ITag>;
+  aggregated: Array<ITag>;
+}
+
+interface IBadge {
+  title: string;
+  primary: boolean;
+  slug: string;
+  link: string;
+}
+
+interface IProfileInfo {
+  id: string;
+  updated_at: string;
+  username: string;
+  name: string;
+  first_name: string;
+  last_name: string;
+  twitter_username: null | string;
+  portfolio_url: null | string;
+  bio: null | string;
+  location: null | string;
+  links: IUserLinks;
+  profile_image: IProfileImage;
+  instagram_username: null | string;
+  total_collections: number;
+  total_likes: number;
+  total_photos: number;
+  accepted_tos: boolean;
+  for_hire: boolean;
+  social: ISocial;
+  followed_by_user: boolean;
+  photos: Array<IPreviewPhoto>;
+  badge: IBadge;
+  tags: ITags;
+  followers_count: number;
+  following_count: number;
+  allow_messages: true;
+  numeric_id: number;
+  downloads: number;
+  meta: IMeta;
+}

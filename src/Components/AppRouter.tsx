@@ -15,9 +15,9 @@ import Search from "@Screens/Search";
 import SearchPhotos from "@Screens/Search/SearchPresenter/SearchPhotos";
 import SearchCollection from "@Screens/Search/SearchPresenter/SearchCollection";
 import Profile from "@Screens/Profile";
-import ProfilePhotos from "@Screens/Profile/ProfilePresenter/ProfilePhotos";
-import ProfileCollections from "@Screens/Profile/ProfilePresenter/ProfileCollections";
-import ProfileLikes from "@Screens/Profile/ProfilePresenter/ProfileLikes";
+import ProfilePhotos from "@Screens/Profile/ProfilePhotos";
+import ProfileCollections from "@Screens/Profile/ProfileCollections";
+import ProfileLikes from "@Screens/Profile/ProfileLikes";
 
 import { redirectionState } from "@RecoilStore/Atoms";
 import { useRecoilValue } from "recoil";

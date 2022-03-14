@@ -2,7 +2,7 @@ import React from "react";
 import ProfileHeader from "./ProfileHeader";
 import { Outlet, Link } from "react-router-dom";
 
-export default function PresenterLayout() {
+export default function ProfileLayout() {
   return (
     <section className="page__container flex-col border-cyan-400">
       <ProfileHeader />

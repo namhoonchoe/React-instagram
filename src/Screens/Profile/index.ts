@@ -1,3 +1,3 @@
-import ProfileContainer from "./ProfileContainer";
+import ProfileLayout from "./ProfileLayout";
 
-export default ProfileContainer
+export default ProfileLayout

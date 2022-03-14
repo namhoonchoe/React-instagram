@@ -50,24 +50,24 @@ export async function searchUsers(query:string) {
 
 export async function getPublicProfile(username:string) {
   const { response } = await unsplash.users.get({username})
-  return response as any
+  return response as IProfileInfo | undefined
 }
 
-export const getUsersPhoto = async(username:string) => {
+export async function getUsersPhoto(username:string) {
   const { response } = await unsplash.users.getPhotos({username})
-  return response
+  return response?.results  as Array<ICoverPhoto> | undefined
 }
 
 
-export const getUsersLikedPhoto = async(username:string) => {
+export async function getUsersLikedPhoto(username:string) {
   const { response } = await unsplash.users.getLikes({username})
-  return response
+  return response?.results as Array<ICoverPhoto> | undefined
 }
 
 
-export const getUsersCollection = async(username:string) => {
+export async function getUsersCollection(username:string) {
   const { response } = await unsplash.users.getCollections({username})
-  return response
+  return response?.results as Array<ISearchCollection> | undefined
 }
 
 export async function getCollection(id:string) {
@@ -78,9 +78,4 @@ export async function getCollection(id:string) {
 export async function getCollectionPhotos(id:string) {
   const { response } = await unsplash.collections.getPhotos({collectionId:id})
   return response?.results as Array<ICoverPhoto>|undefined
-}
-
-export async function getCollectionRelated(id:string) {
-  const { response } = await unsplash.collections.getRelated({collectionId:id})
-  return response as any
 }
